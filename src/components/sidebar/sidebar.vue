@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import {Component, Vue, Prop} from "vue-property-decorator";
-import dropDownList from "@/components/sidebar/dropDownList.vue";
+import dropDownList from "../../components/sidebar/dropDownList.vue";
 
 @Component({
   mounted(){

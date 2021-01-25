@@ -5,6 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 
 import '@/assets/css/common.css'//全局样式
+import '@/assets/css/iconfont/iconfont.css'
 
 Vue.config.productionTip = false
 

@@ -1,6 +1,13 @@
+/*
+ * @Author: your name
+ * @Date: 2021-01-22 11:44:48
+ * @LastEditTime: 2021-01-23 16:19:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \configurationd:\work\wangyiyunmusic\music\src\router\index.ts
+ */
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -11,9 +18,9 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/home/home.vue')
   },
   {
-    path: '/my',
-    name: 'my',
-    component: () => import('@/views/my/my.vue')
+    path: '/findMusic',
+    name: 'findMusic',
+    component: () => import('@/views/findMusic/findMusic.vue')
   },
   {
     path:'*',
