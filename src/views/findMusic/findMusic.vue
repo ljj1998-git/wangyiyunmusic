@@ -1,13 +1,30 @@
 <template>
-  <div>555555555555555555555555555555555555555555555555555555555555555</div>
+  <div id="FindMusic">
+    <Tags></Tags>
+    33
+  </div>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+  import {
+    Component,
+    Vue,
+    Prop
+  } from "vue-property-decorator";
+  import Tags from "../../components/common/Tabs.vue"
+  @Component({
+    components: {
+      Tags
+    }
+  })
+  export default class FindMusic extends Vue {
 
-}
+  }
 </script>
 
-<style>
-
+<style lang="scss">
+  #FindMusic {
+    padding: 16px;
+    box-sizing: border-box;
+  }
 </style>

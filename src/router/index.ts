@@ -14,8 +14,7 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/views/home/home.vue')
+    redirect:'/findMusic',
   },
   {
     path: '/findMusic',
