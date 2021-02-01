@@ -14,16 +14,28 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    redirect:'/findMusic',
+    redirect: '/findMusic',
   },
   {
     path: '/findMusic',
     name: 'findMusic',
-    component: () => import('@/views/findMusic/findMusic.vue')
+    component: () => import('@/views/findMusic/findMusic.vue'),
+    children: [
+      {
+        path: 'gxtj',
+        name: 'gxtj',
+        component: () => import('@/views/findMusic/gxtj.vue')
+      }, {
+        path: 'gd',
+        name: 'gd',
+        component: () => import('@/views/findMusic/gd.vue')
+      }
+
+    ]
   },
   {
-    path:'*',
-    name:'404',
+    path: '*',
+    name: '404',
     component: () => import('@/views/404.vue')
   }
 ]

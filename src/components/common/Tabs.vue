@@ -1,6 +1,6 @@
 <template>
     <div id='Tags'>
-        <div :class="`Tags-box ${selectIndex === index ? 'active' : '' }`" v-for="(item, index) in arr" :key="index" @click="select(index)">{{item}}</div>
+        <router-link :to="item.path" tag="div" :class="`Tags-box ${selectIndex === index ? 'active' : '' }`" v-for="(item, index) in arr" :key="index" @click="select(index)">{{item.name}}</router-link>
     </div>
 </template>
 
@@ -18,7 +18,13 @@
     })
     export default class Tags extends Vue {
         selectIndex: number = 0;
-        arr: string[] = ['个性推荐', '歌单', '主播电台', '排行榜', '歌手', '最新音乐'];
+        arr: object[] = [
+            { name: '个性推荐', path:'gxtj' },
+            { name: '歌单', path:'gd' },
+            { name: '主播电台', path:'zbdt' },
+            { name: '排行榜', path:'phb'},
+            { name: '歌手', path:'gs' },
+            { name: '最新音乐', path:'zxyy' }]
         public select (num: number): void {
             this.selectIndex = num;
         }
@@ -30,16 +36,16 @@
         display: flex;
         align-items: center;
     }
-    .active{
+    #Tags .router-link-active{
         font-weight: 600;
         font-size: 20px;
         color: #000;
-        border-bottom: 5px solid red;
+        border-bottom: 4px solid red;
     }
     #Tags {
         @include flex;
         .Tags-box{
-            margin-left: 5px;
+            margin-left: 10px;
             padding: 5px;
             box-sizing: border-box;
             color: rgb(116, 114, 114);

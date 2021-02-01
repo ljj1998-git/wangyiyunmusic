@@ -1,7 +1,7 @@
 <template>
   <div id="FindMusic">
     <Tags></Tags>
-    33
+    <router-view class="link"></router-view>
   </div>
 </template>
 
@@ -24,7 +24,11 @@
 
 <style lang="scss">
   #FindMusic {
+    width: 100%;
     padding: 16px;
     box-sizing: border-box;
+    .link{
+      margin: 25px 0px 0px 10px;
+    }
   }
 </style>

@@ -29,11 +29,7 @@
     Vue,
     Prop
   } from "vue-property-decorator";
-  @Component({
-    mounted() {
-
-    }
-  })
+  @Component
   export default class DropDownList extends Vue {
     /**
      * @param title 标题
