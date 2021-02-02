@@ -42,23 +42,23 @@
                 showDropBtn: true,
                 list: [{
                         name: "本地音乐",
-                        icon: "local.png"
+                        icon: "yinfu"
                     },
                     {
                         name: "下载管理",
-                        icon: "down.png"
+                        icon: "xiazai"
                     },
                     {
                         name: "我的音乐云盘",
-                        icon: "cloud.png"
+                        icon: "V"
                     },
                     {
                         name: "我的电台",
-                        icon: "music.png"
+                        icon: "diantai"
                     },
                     {
                         name: "我的收藏",
-                        icon: "collection.png"
+                        icon: "shoucang"
                     },
                 ],
             },
@@ -68,11 +68,11 @@
                 showAddBtn: true,
                 list: [{
                         name: "我喜欢的音乐",
-                        icon: "like.png"
+                        icon: "aixin"
                     },
                     {
                         name: "满桂的年歌单满桂的2020年歌单满桂的2020年歌单",
-                        icon: "list.png"
+                        icon: "liebiao"
                     },
                 ],
             }, {
@@ -81,11 +81,11 @@
                 showAddBtn: false,
                 list: [{
                         name: "满桂的年歌单满桂的2020年歌单满桂的2020年歌单",
-                        icon: "list.png"
+                        icon: "liebiao"
                     },
                     {
                         name: "满桂的年歌单满桂的2020年歌单满桂的2020年歌单",
-                        icon: "list.png"
+                        icon: "liebiao"
                     },
                 ],
             },

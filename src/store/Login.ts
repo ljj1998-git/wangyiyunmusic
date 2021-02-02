@@ -1,12 +1,15 @@
 
 import { Commit } from 'vuex'
 const state: any = {
-    userInfo: 0
+    userInfo: null
 };
 
 const mutations: any = {
     setLoginMessage(states: any, message: object) {
         states.userInfo = message
+    },
+    clearMessage(states: any) {
+        states.userInfo = null
     }
 }
 

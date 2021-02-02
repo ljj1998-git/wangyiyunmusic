@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-    import { Vue, Component } from 'vue-property-decorator'
+    import { Vue, Component } from 'vue-property-decorator';
     import Face from './face.vue'
     @Component({
         components: {

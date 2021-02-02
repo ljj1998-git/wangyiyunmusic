@@ -1,4 +1,9 @@
- *{
+ * {
      margin: 0;
      padding: 0;
+ }
+
+ a {
+     color: rgb(42, 98, 221);
+     text-decoration: none;
  }

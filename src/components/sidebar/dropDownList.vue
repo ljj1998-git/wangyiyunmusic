@@ -15,7 +15,7 @@
     </div>
     <router-link to="findMusic" tag="div" class="firstBox-box" v-for="(item, index) in data.list" :key="index" ref="list">
       <!-- <img :src="item.icon ? require(`@/assets/images/${item.icon}`) : ''" /> -->
-      <span class="iconfont icon-yinfu"></span>
+      <span :class=" item.icon ? `iconfont icon-${item.icon}` : '' "></span>
       <div :class="`firstBox-box`">
         {{ item.name }}
       </div>
