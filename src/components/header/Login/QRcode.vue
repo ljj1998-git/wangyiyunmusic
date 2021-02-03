@@ -17,6 +17,7 @@
     } from "vue-property-decorator";
     @Component
     export default class QBcode extends Vue {
+        $message: any;
         mounted() {
             this.getQBcode();
         }
@@ -36,6 +37,11 @@
                                     .then((items: any) => {
                                         if (items.data.code == 200) {
                                             this.QBcodeUrl = items.data.data.qrimg;
+                                        } else {
+                                            this.$message({
+                                                message: '获取数据失败',
+                                                type: 'error'
+                                            });
                                         }
                                     });
                             } catch (error) {
@@ -49,7 +55,7 @@
         }
         @Emit()
         private toAccountLogin(): number {
-            return 1;
+            return 2;
         }
     }
 </script>

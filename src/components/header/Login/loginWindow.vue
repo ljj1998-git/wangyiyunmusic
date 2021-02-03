@@ -1,7 +1,7 @@
 <template>
     <el-dialog :visible="!isOpen" :modal='false' width="350px">
-        <QBcode @to-account-login="dema" v-if="step === 2"></QBcode>
-        <AccountLogin v-else></AccountLogin>
+        <QBcode @to-account-login="changeStep" v-if="step === 1"></QBcode>
+        <AccountLogin v-else @to-code="changeStep"></AccountLogin>
     </el-dialog>
 </template>
 
@@ -23,7 +23,7 @@
         @Prop(Boolean) readonly isOpen!: Boolean;
         private step: number = 1;
         mounted() {}
-        private dema(data: number): void {
+        private changeStep(data: number): void {
             this.step = data
         }
     }

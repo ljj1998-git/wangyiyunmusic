@@ -13,8 +13,8 @@
             <li class="lis" v-for="(item,index) in data1" :key="index">
                 <div>
                     <span :class="`iconfont icon-${item.icon}`"></span>
-                    <el-badge v-if="item.name === '商城' " is-dot>{{item.name}}</el-badge>
-                    <span v-else>{{item.name}}</span>
+                    <el-badge v-if="item.name === '商城' " is-dot style="margin-left:5px">{{item.name}}</el-badge>
+                    <span v-else style="margin-left:5px">{{item.name}}</span>
                 </div>
                 <div v-if="item.right">
                     <span class="iconfont icon-arrow-right"></span>
@@ -25,7 +25,7 @@
         <ul class="third">
             <li class="lis" v-for="(item,index) in data2" :key="index">
                 <div>
-                    <span :class="`iconfont icon-${item.icon}`"></span><span>{{item.name}}</span>
+                    <span :class="`iconfont icon-${item.icon}`"></span><span style="margin-left:5px">{{item.name}}</span>
                 </div>
                 <div v-if="item.right">
                     <span class="iconfont icon-arrow-right"></span>
@@ -36,7 +36,7 @@
         <ul class="forth">
             <li class="lis" v-for="(item,index) in data3" :key="index" @click="signOut">
                 <div>
-                    <span :class="`iconfont icon-${item.icon}`"></span><span>{{item.name}}</span>
+                    <span :class="`iconfont icon-${item.icon}`"></span><span style="margin-left:5px">{{item.name}}</span>
                 </div>
                 <div v-if="item.right">
                     <span class="iconfont icon-arrow-right"></span>
@@ -110,15 +110,9 @@
     li {
         list-style: none;
     }
-
     .el-divider {
         margin: 10px 0 !important;
     }
-
-    .iconfont {
-        margin-right: 5px;
-    }
-
     @mixin flex {
         display: flex;
         align-items: center;
@@ -126,6 +120,7 @@
 
     .box {
         .first {
+            width: 100%;
             .dynamic {
                 @include flex;
                 justify-content: space-around;
@@ -154,6 +149,15 @@
                 text-align: center;
                 margin: 14px auto;
             }
+        }
+        .second{
+            width: 100%;
+        }
+        .third{
+            width:100%;
+        }
+        .forth{
+            width:100%;
         }
 
         .lis {
