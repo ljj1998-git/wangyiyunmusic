@@ -15,6 +15,12 @@
         Component,
         Emit
     } from "vue-property-decorator";
+    import {
+        getQBcodeKey,
+        getQBcodeUrl,
+        getQBcodeStatus,
+        getData
+    } from '../../../api/Login/Login'
     @Component
     export default class QBcode extends Vue {
         $message: any;
@@ -23,40 +29,49 @@
         }
         private QBcodeUrl: string = "";
         private getQBcode(): void {
-            try {
-                (this as any).axios
-                    .post("http://localhost:3000/login/qr/key")
-                    .then((item: any) => {
-                        if (item.data.code === 200) {
-                            const key: string = item.data.data.unikey;
-                            try {
-                                (this as any).axios
-                                    .post(
-                                        `http://localhost:3000/login/qr/create?key=${key}&qrimg=base64`
-                                    )
-                                    .then((items: any) => {
-                                        if (items.data.code == 200) {
-                                            this.QBcodeUrl = items.data.data.qrimg;
-                                        } else {
-                                            this.$message({
-                                                message: '获取数据失败',
-                                                type: 'error'
-                                            });
-                                        }
-                                    });
-                            } catch (error) {
-                                throw new Error(error);
-                            }
+            getQBcodeKey().then((item: any): void => {
+                if (item.code === 200) {
+                    const key = item.data.unikey;
+                    getQBcodeUrl(key).then((items: any) => {
+                        if (items.code === 200) {
+                            this.QBcodeUrl = items.data.qrimg;
+                            let timer = setInterval(() => {
+                                getQBcodeStatus(key).then((val: any) => {
+                                    console.log(val);
+                                    if (val.code === 800) {
+                                        this.$alert(val.message);
+                                        clearInterval(timer)
+                                    } else if (val.code === 803) {
+                                        console.log(val);
+                                        this.close()
+                                        clearInterval(timer)
+                                        getData().then((vals: any) => {
+                                            console.log(vals);
+                                            
+                                        })
+                                    }
+                                })
+                            }, 5000)
+                        } else {
+                            this.$message({
+                                message: '获取数据失败',
+                                type: 'error'
+                            });
                         }
+                    })
+                } else {
+                    this.$message({
+                        message: '获取数据失败',
+                        type: 'error'
                     });
-            } catch (error) {
-                throw new Error(error);
-            }
+                }
+            })
         }
         @Emit()
         private toAccountLogin(): number {
             return 2;
         }
+        @Emit() private close() {}
     }
 </script>
 

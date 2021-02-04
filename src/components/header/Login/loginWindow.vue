@@ -1,6 +1,6 @@
 <template>
-    <el-dialog :visible="!isOpen" :modal='false' width="350px">
-        <QBcode @to-account-login="changeStep" v-if="step === 1"></QBcode>
+    <el-dialog :visible="syncIsOpen" :modal='false' width="350px" @close="closeWindow" @closed='resetStep'>
+        <QBcode @to-account-login="changeStep" @close="closeWindow" v-if="step === 1"></QBcode>
         <AccountLogin v-else @to-code="changeStep"></AccountLogin>
     </el-dialog>
 </template>
@@ -9,22 +9,29 @@
     import {
         Vue,
         Component,
-        Prop
+        Prop,
+        PropSync
     } from 'vue-property-decorator';
     import QBcode from './QRcode.vue';
     import AccountLogin from './accountLogin.vue';
     @Component({
-        components:{
+        components: {
             QBcode,
             AccountLogin
         }
     })
     export default class LoginWindow extends Vue {
-        @Prop(Boolean) readonly isOpen!: Boolean;
+        @PropSync('isOpen', Boolean) syncIsOpen!: Boolean;
         private step: number = 1;
         mounted() {}
         private changeStep(data: number): void {
             this.step = data
+        }
+        private closeWindow(): void {
+            this.syncIsOpen = false;
+        }
+        private resetStep(): void {
+            this.step = 1;
         }
     }
 </script>

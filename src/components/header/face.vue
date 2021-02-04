@@ -2,7 +2,7 @@
     <div>
         <el-popover placement="bottom" width="250" trigger="click" v-model="popoverStatus">
             <DropDownList @sign-out="isShow"></DropDownList>
-            <div class="face" @click="Login" slot="reference">
+            <div class="face" @click="openLoginWindow" slot="reference">
                 <div class="block">
                     <el-avatar :size="30" :src="status ? faceUrl : 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'"></el-avatar>
                 </div>
@@ -10,7 +10,7 @@
                 <div class="triangle-bottom"></div>
             </div>
         </el-popover>
-        <LoginWindow :isOpen="status"></LoginWindow>
+        <LoginWindow :isOpen.sync="dialogStatus"></LoginWindow>
     </div>
 </template>
 
@@ -39,35 +39,37 @@
         private name: string = '';
         private faceUrl: string = '';
         private popoverStatus: boolean = false;
+        private dialogStatus: boolean = false;
         private isShow(data: boolean): void {
             this.popoverStatus = data;
             this.status = false;
         }
-        private Login(): void {
-            try {
-                (this as any).axios.post('http://localhost:3000/login/cellphone?phone=17371243384&password=ljj19980127').then((item: {
-                    status: number;
-                }) => {
-                    if (item.status === 200) {
-                        this.setLoginMessage(item);
-                        console.log(this.userInfo);
-                        this.status = true;
-                        this.name = this.userInfo.data.profile.nickname
-                        this.faceUrl = this.userInfo.data.profile.avatarUrl
-                        this.$message({
-                            message: '登陆成功',
-                            type: 'success'
-                        });
-                    } else {
-                        this.$message({
-                            message: '登陆失败',
-                            type: 'error'
-                        });
-                    }
-                })
-            } catch (error) {
-                throw new Error(error)
-            }
+        private openLoginWindow(): void {
+            this.dialogStatus = true;
+            // try {
+            //     (this as any).axios.post('http://localhost:3000/login/cellphone?phone=17371243384&password=ljj19980127').then((item: {
+            //         status: number;
+            //     }) => {
+            //         if (item.status === 200) {
+            //             this.setLoginMessage(item);
+            //             console.log(this.userInfo);
+            //             this.status = true;
+            //             this.name = this.userInfo.data.profile.nickname
+            //             this.faceUrl = this.userInfo.data.profile.avatarUrl
+            //             this.$message({
+            //                 message: '登陆成功',
+            //                 type: 'success'
+            //             });
+            //         } else {
+            //             this.$message({
+            //                 message: '登陆失败',
+            //                 type: 'error'
+            //             });
+            //         }
+            //     })
+            // } catch (error) {
+            //     throw new Error(error)
+            // }
         }
     }
 </script>
