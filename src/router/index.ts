@@ -34,6 +34,12 @@ const routes: Array<RouteConfig> = [
     ]
   },
   {
+    path: '/songSheet',
+    name: 'songSheet',
+    component: () => import('@/views/songSheet/songSheetList.vue'),
+    children: []
+  },
+  {
     path: '*',
     name: '404',
     component: () => import('@/views/404.vue')

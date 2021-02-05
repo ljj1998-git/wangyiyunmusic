@@ -25,7 +25,7 @@
 
     #Tip {
         @include flex;
-
+        margin-bottom: 10px;
         .name {
             font-size: 20px;
             font-weight: 600;

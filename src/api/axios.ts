@@ -33,8 +33,6 @@ export const Post = <T, U>(url: T, params: U) => {
     return axios.get(`http://${Api.url}${url}`, {
         params: params
     }).then(res => {
-        console.log(res);
-        
         return res.data
     })
 }

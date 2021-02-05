@@ -9,7 +9,7 @@
         </div>
         <div id="tjgd">
             <Title :title="'推荐歌单'"></Title>
-            <!-- <Tjgd></Tjgd> -->
+            <Tjgd></Tjgd>
         </div>
         <div id="djfs">
             <Title :title="'独家放送'"></Title>
@@ -34,16 +34,11 @@
 
 <script lang="ts">
     import { Vue, Component } from 'vue-property-decorator'
-    import Tjgd from '../../components/findMusic/list.vue'
+    import Tjgd from '../../components/findMusic/personalized.vue'
     import Title from '../../components/findMusic/title.vue'
     @Component({
         components:{
             Tjgd, Title
-        }
-    })
-    @Component({
-        mounted() {
-            
         }
     })
     export default class Gxtj extends Vue {
